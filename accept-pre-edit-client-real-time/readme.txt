@@ -1,4 +1,4 @@
-#Overview
+#	Overview
 
 This other jQuery plug-in is called ACCEPT Pre-Edit Real-time plug-in and in practice it is actually a lightweight version of the already developed ACCEPT Pre-Edit plug-in. 
 This version besides more lightweight in the way it is not using an external dialog, it provides:
@@ -26,8 +26,8 @@ Since the Real Time plug-in is itself a jQuery plug-in, some prior configuration
 
 The three main parameters are:
 
-(string) interactiveCheckConfigPath – The configuration path allows the Real time plug-in load his labels from a JSON based configuration file.
-(string) acceptHubUrl – Endpoint where to access the ACCEPT API(URI for the MS Signal R Hub...).
+(string) interactiveCheckConfigPath â€“ The configuration path allows the Real time plug-in load his labels from a JSON based configuration file.
+(string) acceptHubUrl â€“ Endpoint where to access the ACCEPT API(URI for the MS Signal R Hub...).
 (string) realTimeCheckSelector - the CSS selector for the element that "onClick" starts the checks(normally a button...).
 
 There are other also important:
