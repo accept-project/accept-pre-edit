@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title>Example - ACCEPT Real Time Plug-in</title>
+    
+      <script src="../extras/jquery/jquery-1.7.1.js" type="text/javascript"></script>     
+      <script src="../extras/underscore/underscore-min.js" type="text/javascript"></script>   
+	  <script src="../js/accept-realtime-jquery-plugin-1.0.js" type="text/javascript"></script>  
+	  <link href="../css/AcceptRealTime.css" rel="stylesheet" type="text/css" />
+	  <script src="[ACCEPT_API_URL]/Scripts/jquery.signalR-2.1.1.js"></script>
+      <script src="[ACCEPT_API_URL]/SignalR/hubs"></script>    
+	  
+	  
+<script type="text/javascript">
+
+    $(document).ready(function () 
+	{	
+		//first, let's use a CSS selector to gather and cache all the placeholders...
+		var $multipleContainersSelector = $(document.body).find('p.process-me'); 				
+		
+		//then we instantiate the plug-in. 		
+		$multipleContainersSelector.AcceptRealTime({
+		configurationFilesPath: "../config/language",
+		acceptHubUrl: "[ACCEPT_API_URL]/signalr",	          
+		contentLanguage: "en",
+		uiLanguage: "en",
+		processingRuleSet: "Preediting_Forum",
+		realTimeCheckSelector: "#triggerRealtimeCheck",
+		onAfterCheck: function () {                 
+		//TODO: add custom action.
+		},
+		onBeforeCheck: function () {                
+		//TODO: add custom action.
+		},
+		onReplace: function (e, context, option) {                  
+		//TODO: add custom action.
+		},
+		onBeforeDisplayingContextMenus: function (e, context, option) {
+		//TODO: add custom action.
+		}
+	});
+    
+	});
+
+</script>
+
+</head>
+<body>
+<h1>ACCEPT Real Time Plug-in</h1>
+<div>
+<h3>Use Case:</h3>
+<div>
+In this example, there are three paragraphs that will be used to demonstrate:
+
+<ul>
+<li> - Multi placeholder functionality, by instantiating the plug-in pointing to multiple paragraphs (HTML "P" elements).</li>
+<li> - The Real Time environment(using Fiddler or other tool for monitoring is advisable).</li>
+<li> - The versatility of the plug-in when displaying flags inline with the multiple placeholders(again, in this case HTML "P" elements).</li>
+</ul>
+</div>
+
+<div>
+The following two first paragraphs will be scoped by the plug-in configuration, so when clicking the "Trigger..." button,
+it triggers a check against the configured ACCEPT API endpoint and displays two flags:
+
+- one spelling error flagged(mouse over "testt" it to display the context-menu) in the first paragraph.
+- one grammar rule is flagged(mouse over "an grammar" it to display the context-menu) in the second paragraphs.
+ 
+</div>
+
+</div>
+<br />
+<h2>Placeholders:</h2>
+
+<p class="process-me">this one contains a testt spelling error</p>
+
+<p class="process-me">this one contains an grammar error</p>
+
+<p class="process-me">this one doesn't contain the CSS attribute class="process-me". The plug-in will not scope it...</p>
+<br />
+<input type="button" id="triggerRealtimeCheck" value="Trigger the Real Time check, Click me!" />
+
+</body>
+</html>
